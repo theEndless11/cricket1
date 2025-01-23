@@ -1,4 +1,4 @@
-// Use 'import' instead of 'require' for node-fetch in ES modules
+// Use 'import' for ES Modules
 import fetch from 'node-fetch';
 
 export default async function handler(req, res) {
