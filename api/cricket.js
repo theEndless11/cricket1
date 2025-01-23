@@ -1,6 +1,7 @@
-const fetch = require('node-fetch');
+// Use 'import' instead of 'require' for node-fetch in ES modules
+import fetch from 'node-fetch';
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   const { matchId } = req.query;
 
   if (!matchId) {
@@ -23,4 +24,4 @@ module.exports = async (req, res) => {
     console.error('Error fetching match data from CricAPI:', error);
     res.status(500).json({ error: 'Error fetching match data from CricAPI' });
   }
-};
+}
