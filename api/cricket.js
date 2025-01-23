@@ -14,16 +14,10 @@ module.exports = async (req, res) => {
     const response = await fetch(url);
     const data = await response.json();
 
-    // Set CORS headers to allow cross-origin requests from any origin
-    res.setHeader('Access-Control-Allow-Origin', '*');  // Allow all origins
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');  // Allow GET and POST methods
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');  // Allow Content-Type header
-
-    // Check if CricAPI returns valid match data
-    if (data && data.data) {
+    if (response.ok) {
       res.status(200).json(data);
     } else {
-      res.status(404).json({ error: 'No live match data available for this matchId' });
+      res.status(404).json({ error: 'No live match data available' });
     }
   } catch (error) {
     console.error('Error fetching match data from CricAPI:', error);
